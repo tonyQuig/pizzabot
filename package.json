@@ -1,0 +1,23 @@
+{
+  "name": "pizzabot",
+  "version": "1.0.0",
+  "description": "Given coordinate adresses pizzabot will output the route taken to deliver pizzas!",
+  "main": "pizzabot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonyQuig/pizzabot.git"
+  },
+  "keywords": [
+    "node",
+    "javascript"
+  ],
+  "author": "Tony Quigley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tonyQuig/pizzabot/issues"
+  },
+  "homepage": "https://github.com/tonyQuig/pizzabot#readme"
+}

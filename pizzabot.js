@@ -1,4 +1,3 @@
-var solution = '';
 var coors = [];
 var coorList = [];
 var grid = [];
@@ -7,15 +6,15 @@ var coordinateArgs = 3;
 var coorsAfterFirst = 1;
 var lastPosition = [];
 var startingPosition = [x = 0, y = 0];
-var directions = [];
+// var directions = [];
+var directionsModule = require('./directions');
 
 //handles command line args.
 var handleArgs = function (args) {
 
-    var grid = getGrid(args[2]);
+    // var grid = getGrid(args[2]);
 
     var coors = getCoordinates(args);
-    console.log('coors: ', coors);
 
     //Get route for first trip
     getRoute(startingPosition, coors[0]);
@@ -26,7 +25,7 @@ var handleArgs = function (args) {
         coorsAfterFirst++;
     }
 
-    console.log('Journey: ', directions.join(''));
+    console.log('Journey: ', directionsModule.directions.join(''));
 };
 
 var getGrid = function (pGrid) {
@@ -61,10 +60,6 @@ var getCoordinates = function (pCoors) {
 
 var getRoute = function (position1, position2) {
 
-    console.log('Directions before journey: ', directions);
-    console.log('Position 1: ', position1);
-    console.log('Position 2: ', position2);
-
     xDifference = position2[0] - position1[0];
     yDifference = position2[1] - position1[1];
 
@@ -72,46 +67,30 @@ var getRoute = function (position1, position2) {
     var yCurrent = position1[1];
 
     while (xCurrent < position2[0]) {
-        moveEast();
+        directionsModule.moveEast();
         xCurrent++;
     }
 
     while (xCurrent > position2[0]) {
-        moveWest();
+        directionsModule.moveWest();
         xCurrent--;
     }
 
     while (yCurrent < position2[1]) {
-        moveNorth();
+        directionsModule.moveNorth();
         yCurrent++;
     }
 
     while (yCurrent > position2[1]) {
-        moveSouth();
+        directionsModule.moveSouth();
         yCurrent--;
     }
+
     lastPosition = [];
     lastPosition.push(x = xCurrent, y = yCurrent);
 
-    directions.push('D');
-    // console.log('Individual journey: ', directions);
+    directionsModule.directions.push('D');
 
-}
-
-var moveWest = function () {
-    return directions.push('W');
-}
-
-var moveSouth = function () {
-    return directions.push('S');
-}
-
-var moveEast = function () {
-    return directions.push('E');
-}
-
-var moveNorth = function () {
-    return directions.push('N');
 }
 
 //Get command line args
