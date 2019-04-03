@@ -7,7 +7,7 @@ var coorsAfterFirst = 1;
 var lastPosition = [];
 var startingPosition = [x = 0, y = 0];
 // var directions = [];
-var directionsModule = require('./directions');
+var directionsModule = require('./scripts/directions');
 
 //handles command line args.
 var handleArgs = function (args) {
