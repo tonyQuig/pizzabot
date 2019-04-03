@@ -6,26 +6,28 @@ var coordinateArgs = 3;
 var coorsAfterFirst = 1;
 var lastPosition = [];
 var startingPosition = [x = 0, y = 0];
-// var directions = [];
 var directionsModule = require('./scripts/directions');
 
 //handles command line args.
 var handleArgs = function (args) {
 
-    // var grid = getGrid(args[2]);
-
     var coors = getCoordinates(args);
 
-    //Get route for first trip
+    //Get route for first delievery
     getRoute(startingPosition, coors[0]);
 
-    //Get route for all other trips
-    while (coorsAfterFirst < coors.length) {
-        getRoute(lastPosition, coors[coorsAfterFirst]);
-        coorsAfterFirst++;
-    }
+    var grid = getGrid(args[2]);
 
-    console.log('Journey: ', directionsModule.directions.join(''));
+    if (grid.x > 5 || grid.y > 5) {
+        console.log('Coordinates exceed the 5x5 limit!')
+    } else {
+        //Get route for all other trips
+        while (coorsAfterFirst < coors.length) {
+            getRoute(lastPosition, coors[coorsAfterFirst]);
+            coorsAfterFirst++;
+        }
+        console.log('Journey: ', directionsModule.directions.join(''));
+    }
 };
 
 var getGrid = function (pGrid) {
@@ -49,7 +51,6 @@ var getCoordinates = function (pCoors) {
         var coorArray = pCoors[coordinateArgs].split(',');
         coors.x = parseInt(coorArray[0]);
         coors.y = parseInt(coorArray[1]);
-
         coorList.push([coors.x, coors.y]);
 
         coordinateArgs++;
@@ -59,9 +60,6 @@ var getCoordinates = function (pCoors) {
 }
 
 var getRoute = function (position1, position2) {
-
-    xDifference = position2[0] - position1[0];
-    yDifference = position2[1] - position1[1];
 
     var xCurrent = position1[0];
     var yCurrent = position1[1];
