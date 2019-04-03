@@ -32,8 +32,6 @@ var handleArgs = function (args) {
 
 var getGrid = function (pGrid) {
 
-    //TODO: Handle case when grid input isn't of the format '5x5'
-
     var gridArray = pGrid.split('x');
 
     //Take command line grid and pipulate grid array.
