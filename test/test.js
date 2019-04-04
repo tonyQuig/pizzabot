@@ -1,8 +1,9 @@
 var expect = require('chai').expect;
 var directionsModule = require('../scripts/directions');
 var routeModule = require('../scripts/route');
+var coordinateModule = require('../scripts/coordinates');
 
-describe('Directions', function () {
+describe('Directions Module', function () {
     it('moveWest() should append element to array', function () {
         directionsModule.moveWest();
         expect(directionsModule.directions[0]).to.be.equal('W');
@@ -36,5 +37,11 @@ describe('Routes Module', function () {
             ['2', '3']
         ])
         expect(directionsModule.directions.join('')).to.be.equal('WSENENNDEND')
+    });
+});
+
+describe('Coordinates Module', function (){
+    it('should remove the  from the coordinate', function(){
+        expect(coordinateModule.getCoordinates([ '1,2', '2,3' ])).to.eql([['1','2'], ['2','3']]);
     });
 })
