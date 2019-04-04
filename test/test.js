@@ -3,22 +3,26 @@ var directionsModule = require('../scripts/directions');
 
 describe('Directions', function(){
     it('moveWest() should append element to array', function(){
-        var west = directionsModule.moveWest();
-        expect(west).to.be.equal(1);
+        directionsModule.moveWest();
+        expect(directionsModule.directions[0]).to.be.equal('W');
     });
 
     it('moveSouth() should append another element to array', function(){
-        var south = directionsModule.moveSouth();
-        expect(south).to.be.equal(2);
+        directionsModule.moveSouth();
+        expect(directionsModule.directions[1]).to.be.equal('S');
     });
 
     it('moveEast() should append another element to array', function(){
-        var east = directionsModule.moveEast();
-        expect(east).to.be.equal(3);
+        directionsModule.moveEast();
+        expect(directionsModule.directions[2]).to.be.equal('E');
     });
 
     it('moveNorth() should append another element to array', function(){
-        var north = directionsModule.moveNorth();
-        expect(north).to.be.equal(4);
+        directionsModule.moveNorth();
+        expect(directionsModule.directions[3]).to.be.equal('N');
     });
+
+    it('directions array should list all directions taken', function(){
+        expect(directionsModule.directions.join('')).to.be.equal('WSEN');
+    })
 });
