@@ -1,16 +1,27 @@
-var directionsModule = require('./directions');
+const directionsModule = require('./directions');
 
+/**
+ * Takes array of coordinates, gets the route between the previous and current coordinates
+ * Returns the finished journey.
+ * @param {Array} coors 
+ */
 const getRoute = function (coors) {
 
     coors.reduce((prev, current) => {
+        console.log('Previous: ', prev, 'current: ', current)
         getRouteBetweenCoordinates(prev, current);
         return current;
-    }, [0, 0]);
+    }, [0,0]);
 
     return directionsModule.directions.join('');
 
-}
+};
 
+/**
+ * Takes two sets of coordinates and works out which direction to take on the grid. 
+ * @param {Array} coordinate1 
+ * @param {Array} coordinate2 
+ */
 const getRouteBetweenCoordinates = (coordinate1, coordinate2) => {
 
     let xCurrent = coordinate1[0];
