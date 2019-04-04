@@ -7,6 +7,8 @@ const directionsModule = require('./directions');
  */
 const getRoute = function (coors) {
 
+    console.log('Coors: ', coors);
+
     coors.reduce((prev, current) => {
         console.log('Previous: ', prev, 'current: ', current)
         getRouteBetweenCoordinates(prev, current);
@@ -51,6 +53,7 @@ const getRouteBetweenCoordinates = (coordinate1, coordinate2) => {
 }
 
 module.exports = {
-    getRoute: getRoute
+    getRoute: getRoute,
+    getRouteBetweenCoordinates: getRouteBetweenCoordinates
 }
 
