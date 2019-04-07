@@ -1,3 +1,7 @@
+/**
+ * Module handles the movement of pizzabot. 
+ * Options: North, East, South, West.
+ */
 var directions = function () {
 
     var directions = [];
